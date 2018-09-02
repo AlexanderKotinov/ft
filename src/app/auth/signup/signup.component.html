@@ -1,11 +1,26 @@
 <section>
-  <form [formGroup]="signUpForm" fxLayout="column" fxLayoutAlign="center center">
+  <form [formGroup]="signUpForm" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <input type="email" matInput placeholder="Email" formControlName="email">
+      <mat-error *ngIf="signUpForm.controls['email'].hasError('email')">Email invalid!</mat-error>
+      <mat-error *ngIf="signUpForm.controls['email'].hasError('required')">Field must be not empty!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field hintLabel="Min length 5 characters long.">
+      <input type="password" matInput placeholder="Password" formControlName="password">
+      <mat-error *ngIf="signUpForm.controls['password'].hasError('minlength')">Password invalid!</mat-error>
+      <mat-error *ngIf="signUpForm.controls['password'].hasError('required')">Field must be not empty!</mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input type="password" matInput placeholder="Password" formControlName="password">
+      <input matInput placeholder="Your birthday date" [matDatepicker]="picker" formControlName="birthday" readonly [max]="maxDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="signUpForm.controls['birthday'].hasError('required')">Field must be not empty!</mat-error>
     </mat-form-field>
+
+    <mat-checkbox [formControlName]="'agree'" color="primary">Agree to Terms & Conditions</mat-checkbox>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="!signUpForm.valid">Submit</button>
   </form>
 </section>
