@@ -1,0 +1,26 @@
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 300px;
+}
+
+.menu-links {
+  text-decoration: none;
+  color: #fff;
+}
+
+.menu-links:hover,
+.menu-links:active {
+  color: lightgreen;
+}
+
+.nav-items {
+  list-style: none;
+}
+
+.logo {
+  color: #fff;
+  text-decoration: none;
+}
