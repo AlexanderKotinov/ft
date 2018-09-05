@@ -1,23 +1,9 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav role="navigation">
-    <p>Fitness tracker</p>
+    <app-sidenav-list (closeSidenav)="sidenav.close();"></app-sidenav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <div fxHide.gt-xs>
-        <button mat-icon-button color="basic" (click)="sidenav.toggle();">
-          <mat-icon>menu</mat-icon>
-        </button>
-      </div>
-      <div><a class="logo" routerLink="/">LOGO</a></div>
-      <div fxFlex fxLayout fxLayoutAlign="flex-end" fxLayoutGap="10px">
-        <ul fxLayout class="nav-items" fxLayoutGap="10px" fxHide.xs>
-          <li><a class="menu-links" routerLink="/signup">Signup</a></li>
-          <li><a class="menu-links" routerLink="/login">Login</a></li>
-          <li><a class="menu-links" routerLink="/training">Training</a></li>
-        </ul>
-      </div>
-    </mat-toolbar>
+    <app-header (sidenavToggle)="sidenav.toggle();"></app-header>
     <main>
       <router-outlet></router-outlet>
     </main>
