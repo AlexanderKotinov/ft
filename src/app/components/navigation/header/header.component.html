@@ -7,9 +7,10 @@
   <div><a class="logo" routerLink="/">LOGO</a></div>
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxLayoutGap="10px">
     <ul fxLayout class="nav-items" fxLayoutGap="10px" fxHide.xs>
-      <li><a class="menu-links" routerLink="/signup">Signup</a></li>
-      <li><a class="menu-links" routerLink="/login">Login</a></li>
-      <li><a class="menu-links" routerLink="/training">Training</a></li>
+      <li><a class="menu-links" routerLink="/signup" *ngIf="!isAuth">Signup</a></li>
+      <li><a class="menu-links" routerLink="/login" *ngIf="!isAuth">Login</a></li>
+      <li><a class="menu-links" routerLink="/training" *ngIf="isAuth">Training</a></li>
+      <li><a class="menu-links" (click)="onLogout()" *ngIf="isAuth">Logout</a></li>
     </ul>
   </div>
 </mat-toolbar>
