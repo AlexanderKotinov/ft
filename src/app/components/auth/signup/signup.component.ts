@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +11,8 @@ import {AuthService} from '../../../services/auth.service';
 export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
   maxDate: Date;
-  constructor(private _authService: AuthService) { }
+  constructor(private _authService: AuthService,
+              private _router: Router) { }
 
   ngOnInit() {
     this.maxDate = new Date();
@@ -23,6 +25,7 @@ export class SignupComponent implements OnInit {
       email: this.signUpForm.value.email,
       password: this.signUpForm.value.password
     });
+    this._router.navigate(['/training']);
   }
 
   private _signUpFromInit() {

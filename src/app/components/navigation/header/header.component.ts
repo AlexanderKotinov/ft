@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, OnDestroy} from '@angular/core';
 import {AuthService} from '../../../services/auth.service';
 import {Router} from '@angular/router';
 
@@ -7,16 +7,16 @@ import {Router} from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   @Output() sidenavToggle = new EventEmitter<void>();
 
   isAuth: boolean;
 
-  constructor(private authService: AuthService,
-              private router: Router) { }
+  constructor(private _authService: AuthService,
+              private _router: Router) { }
 
   ngOnInit() {
-    this.authService.logged.subscribe(response => {
+    this._authService.logged.subscribe(response => {
       this.isAuth = response;
     });
   }
@@ -26,7 +26,11 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout() {
-    this.authService.logout();
-    this.router.navigate(['/']);
+    this._authService.logout();
+    this._router.navigate(['/login']);
+  }
+
+  ngOnDestroy() {
+    this._authService.logged.unsubscribe();
   }
 }
