@@ -7,8 +7,7 @@
       <form [formGroup]="createTrainingForm" (ngSubmit)="onSubmit();">
         <mat-form-field>
           <mat-select placeholder="Select training type" formControlName="trainingType">
-            <mat-option [value]="'swimming'">Swimming</mat-option>
-            <mat-option [value]="'running'">Running</mat-option>
+            <mat-option [value]="exercise.id" *ngFor="let exercise of exercises">{{ exercise.name }}</mat-option>
           </mat-select>
         </mat-form-field>
       </form>
