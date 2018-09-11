@@ -12,17 +12,15 @@ export class NewTrainingComponent implements OnInit {
   createTrainingForm: FormGroup;
   exercises: Exercise[];
 
-  @Output() strainingStarted = new EventEmitter<void>();
-
   constructor(private _trainingService: TrainingService) { }
 
   ngOnInit() {
     this._createTrainingFormInit();
-    this.exercises = this._trainingService.availableExercises;
+    this.exercises = this._trainingService.getAvailableExercises();
   }
 
   onSubmit() {
-    this.strainingStarted.emit();
+    this._trainingService.startExercise(this.createTrainingForm.value.trainingType);
   }
 
   private _createTrainingFormInit() {
