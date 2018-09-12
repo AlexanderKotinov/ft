@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {TrainingService} from '../../services/training.service';
 
@@ -21,7 +21,5 @@ export class TrainingComponent implements OnInit {
         this.trainingStarted = false;
       }
     });
-    console.log(this.exerciseSubscription);
   }
-
 }

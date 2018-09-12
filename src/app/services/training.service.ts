@@ -13,6 +13,7 @@ export class TrainingService {
 
   private _startedExercise: Exercise;
   exerciseChanged = new Subject();
+  exercices: Exercise[] = [];
 
   constructor() {
   }
@@ -24,5 +25,25 @@ export class TrainingService {
   startExercise(exerciseId: string) {
     this._startedExercise = this._availableExercises.find(e => e.id === exerciseId);
     this.exerciseChanged.next({...this._startedExercise});
+  }
+
+  getRunningExercise() {
+    return { ...this._startedExercise };
+  }
+
+  completeExercise() {
+    this.exercices.push({ ...this._startedExercise, date: new Date(), state: 'completed'});
+    this._startedExercise = null;
+    this.exerciseChanged.next(null);
+  }
+
+  cancelExercise(progress: number) {
+    this.exercices.push({ ...this._startedExercise,
+      duration: this._startedExercise.duration * (progress / 100),
+      calories: this._startedExercise.calories * (progress / 100),
+      date: new Date(),
+      state: 'completed'});
+    this._startedExercise = null;
+    this.exerciseChanged.next(null);
   }
 }
