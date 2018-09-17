@@ -2,7 +2,9 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {TrainingService} from '../../../services/training.service';
 import {Exercise} from '../../../models/exercise.model';
-import { AngularFirestore } from 'angularfire2/firestore';
+
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-new-training',
@@ -11,15 +13,15 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class NewTrainingComponent implements OnInit {
   createTrainingForm: FormGroup;
-  exercises: any;
+  exercises: Exercise[];
 
-  constructor(private _trainingService: TrainingService,
-              private _afs: AngularFirestore) { }
+  constructor(private _trainingService: TrainingService) { }
 
   ngOnInit() {
     this._createTrainingFormInit();
-    this._afs.collection('availableExercises').valueChanges().subscribe(response => {
-      this.exercises = response;
+    this._trainingService.fetchAvailableExercises();
+    this._trainingService.exercisesChanged.subscribe((exercises: Exercise[]) => {
+      this.exercises = exercises;
     });
   }
 
