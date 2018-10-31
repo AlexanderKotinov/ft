@@ -38,6 +38,10 @@ export class TrainingService {
       this._availableExercises = exercises;
       this.exercisesChanged.next([...this._availableExercises]);
       this._uiService.loadingStateChanged.next(false);
+    }, error => {
+      this._uiService.loadingStateChanged.next(false);
+      this._uiService.showError('Fetching failed.', null, 3000);
+      this.exercisesChanged.next(null);
     });
   }
 
