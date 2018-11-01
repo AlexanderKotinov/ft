@@ -8,10 +8,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
 import { AppComponent } from './app.component';
-import { TrainingComponent } from './components/training/training.component';
-import { CurrentTrainingComponent } from './components/training/current-training/current-training.component';
-import { NewTrainingComponent } from './components/training/new-training/new-training.component';
-import { PastTrainingComponent } from './components/training/past-training/past-training.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -21,14 +17,11 @@ import { SidenavListComponent } from './components/navigation/sidenav-list/siden
 import { StopTrainingDialogComponent } from './components/training/current-training/stop-training-dialog/stop-training-dialog.component';
 import { environment } from '../environments/environment';
 import { AuthModule } from './auth.module';
+import {TrainingModule} from "./training.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    TrainingComponent,
-    CurrentTrainingComponent,
-    NewTrainingComponent,
-    PastTrainingComponent,
     WelcomeComponent,
     HeaderComponent,
     SidenavListComponent,
@@ -44,7 +37,8 @@ import { AuthModule } from './auth.module';
     AuthModule,
     AngularFireModule.initializeApp(environment.firebase, 'ftracker'),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    TrainingModule
   ],
   providers: [],
   bootstrap: [AppComponent],
