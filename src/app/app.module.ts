@@ -4,8 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-
 
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
@@ -17,7 +15,7 @@ import { SidenavListComponent } from './components/navigation/sidenav-list/siden
 import { StopTrainingDialogComponent } from './components/training/current-training/stop-training-dialog/stop-training-dialog.component';
 import { environment } from '../environments/environment';
 import { AuthModule } from './auth.module';
-import {TrainingModule} from "./training.module";
+import { TrainingModule } from './training.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +35,6 @@ import {TrainingModule} from "./training.module";
     AuthModule,
     AngularFireModule.initializeApp(environment.firebase, 'ftracker'),
     AngularFirestoreModule,
-    AngularFireAuthModule,
     TrainingModule
   ],
   providers: [],

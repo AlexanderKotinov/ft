@@ -4,7 +4,8 @@ import { SignupComponent } from './components/auth/signup/signup.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
-import { FlexModule } from '@angular/flex-layout';
+import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 @NgModule({
   imports: [
@@ -12,7 +13,9 @@ import { FlexModule } from '@angular/flex-layout';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    FlexModule
+    FlexModule,
+    FlexLayoutModule,
+    AngularFireAuthModule
   ],
   declarations: [
     SignupComponent,
