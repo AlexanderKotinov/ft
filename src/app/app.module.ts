@@ -28,14 +28,11 @@ import { TrainingModule } from './training.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    FlexLayoutModule,
     AuthModule,
     AngularFireModule.initializeApp(environment.firebase, 'ftracker'),
     AngularFirestoreModule,
-    TrainingModule
+    TrainingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
