@@ -16,6 +16,10 @@ import { StopTrainingDialogComponent } from './components/training/current-train
 import { environment } from '../environments/environment';
 import { AuthModule } from './auth.module';
 import { TrainingModule } from './training.module';
+import {SharedModule} from "./shared/shared.module";
+import {AngularFireAuthModule} from "angularfire2/auth";
+import {SignupComponent} from "./components/auth/signup/signup.component";
+import {LoginComponent} from "./components/auth/login/login.component";
 
 @NgModule({
   declarations: [
@@ -29,10 +33,14 @@ import { TrainingModule } from './training.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    AuthModule,
     AngularFireModule.initializeApp(environment.firebase, 'ftracker'),
     AngularFirestoreModule,
     TrainingModule,
+    ReactiveFormsModule,
+    AngularFireAuthModule,
+    SharedModule,
+    AppRoutingModule,
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

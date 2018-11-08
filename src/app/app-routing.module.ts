@@ -9,6 +9,7 @@ import {CurrentTrainingComponent} from './components/training/current-training/c
 import {NewTrainingComponent} from './components/training/new-training/new-training.component';
 import {PastTrainingComponent} from './components/training/past-training/past-training.component';
 import {AuthGuard} from './services/auth.guard';
+import {AuthRoutingModule} from "./auth-routing.module";
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AuthRoutingModule
   ],
   exports: [
     RouterModule

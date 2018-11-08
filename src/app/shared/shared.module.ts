@@ -16,6 +16,12 @@ import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
   declarations: [
   ],
   exports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    FlexModule,
+    FlexLayoutModule,
   ]
 })
 export class SharedModule { }

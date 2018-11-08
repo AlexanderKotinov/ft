@@ -5,15 +5,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
-import {MaterialModule} from "./material.module";
 
 @NgModule({
   imports: [
+    SharedModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
-    SharedModule,
     AppRoutingModule,
-    MaterialModule
   ],
   declarations: [
     SignupComponent,
