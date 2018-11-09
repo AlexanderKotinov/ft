@@ -10,17 +10,18 @@ import {NewTrainingComponent} from './components/training/new-training/new-train
 import {PastTrainingComponent} from './components/training/past-training/past-training.component';
 import {AuthGuard} from './services/auth.guard';
 import {AuthRoutingModule} from "./auth-routing.module";
+import {TrainingRoutingModule} from "./training-routing.module";
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
-  { path: 'training', component: TrainingComponent, canActivate: [AuthGuard] }
+  { path: 'training', loadChildren: './training.module#TrainingModule' }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forRoot(routes),
-    AuthRoutingModule
+    AuthRoutingModule,
   ],
   exports: [
     RouterModule
