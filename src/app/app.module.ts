@@ -17,6 +17,7 @@ import { TrainingModule } from './components/training/training.module';
 import {SharedModule} from './shared/shared.module';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AuthRoutingModule} from './auth-routing.module';
+import {TrainingRoutingModule} from "./components/training/training-routing.module";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,6 @@ import {AuthRoutingModule} from './auth-routing.module';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'ftracker'),
     AngularFirestoreModule,
-    TrainingModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
     SharedModule,

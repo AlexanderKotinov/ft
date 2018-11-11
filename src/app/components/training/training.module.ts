@@ -6,13 +6,15 @@ import { CurrentTrainingComponent } from './current-training/current-training.co
 import { PastTrainingComponent } from './past-training/past-training.component';
 import { MaterialModule } from '../../material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {TrainingRoutingModule} from "./training-routing.module";
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TrainingRoutingModule
   ],
   declarations: [
     TrainingComponent,
