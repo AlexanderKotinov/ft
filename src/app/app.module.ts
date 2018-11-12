@@ -13,11 +13,11 @@ import { SidenavListComponent } from './components/navigation/sidenav-list/siden
 import { StopTrainingDialogComponent } from './components/training/current-training/stop-training-dialog/stop-training-dialog.component';
 import { environment } from '../environments/environment';
 import { AuthModule } from './auth.module';
-import { TrainingModule } from './components/training/training.module';
 import {SharedModule} from './shared/shared.module';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AuthRoutingModule} from './auth-routing.module';
-import {TrainingRoutingModule} from "./components/training/training-routing.module";
+import { appReducer } from './app.reducer';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import {TrainingRoutingModule} from "./components/training/training-routing.modu
     AngularFireAuthModule,
     SharedModule,
     AuthModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    StoreModule.forRoot({ui: appReducer})
   ],
   providers: [],
   bootstrap: [AppComponent],
