@@ -16,7 +16,7 @@ import { AuthModule } from './auth.module';
 import {SharedModule} from './shared/shared.module';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AuthRoutingModule} from './auth-routing.module';
-import { appReducer } from './app.reducer';
+import { reducers } from './app.reducer';
 import { StoreModule } from '@ngrx/store';
 
 @NgModule({
@@ -38,7 +38,7 @@ import { StoreModule } from '@ngrx/store';
     SharedModule,
     AuthModule,
     AuthRoutingModule,
-    StoreModule.forRoot({ui: appReducer})
+    StoreModule.forRoot(reducers)
   ],
   providers: [],
   bootstrap: [AppComponent],

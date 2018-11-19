@@ -22,7 +22,7 @@ export class AuthService {
               private _router: Router,
               private afs: AngularFirestore,
               private _uiService: UiService,
-              private _store: Store<{ui: fromRoot.State}>) {
+              private _store: Store<fromRoot.State>) {
     this._user = _auth.authState;
     _auth.authState.subscribe(user => {
       user ? this._userDetails = user : this._userDetails = null;
@@ -41,7 +41,7 @@ export class AuthService {
       })
       .catch(error => {
         // this._uiService.loadingStateChanged.next(false);
-        this._store.dispatch({type: 'STOP_LOADING'});
+        this._store.dispatch(new UI.StopLoading());
         this._uiService.showError(error.message, null, 4000);
       });
   }
@@ -59,7 +59,7 @@ export class AuthService {
       .catch(error => {
         this._uiService.showError(error.message, null, 4000);
         // this._uiService.loadingStateChanged.next(false);
-        this._store.dispatch(new UI.StopLoading()});
+        this._store.dispatch(new UI.StopLoading());
       });
   }
 

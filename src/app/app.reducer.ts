@@ -1,6 +1,5 @@
-uiimport * as fromUi from './shared/ui.reducer';
-import {ActionReducerMap, createFeatureSelector, createSelector} from "@ngrx/store";
-import {createFeatureReducerFactory} from "@ngrx/store/src/utils";
+import * as fromUi from './shared/ui.reducer';
+import {ActionReducerMap, createFeatureSelector, createSelector} from '@ngrx/store';
 
 export interface State {
   ui: fromUi.State;
@@ -11,4 +10,4 @@ export const reducers: ActionReducerMap<State> = {
 };
 
 export const getUiState = createFeatureSelector<fromUi.State>('ui');
-export const getIsLoadin = createSelector(getUiState, fromUi.getIsLoading);
+export const getIsLoading = createSelector(getUiState, fromUi.getIsLoading);
