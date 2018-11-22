@@ -31,24 +31,20 @@ export class AuthService {
   }
 
   registerUser(authData: AuthData): void {
-    // this._uiService.loadingStateChanged.next(true);
     this._store.dispatch(new UI.StartLoading());
     this._auth.auth.createUserWithEmailAndPassword(authData.email, authData.email)
       .then(res => {
-        // this._uiService.loadingStateChanged.next(false);
         this._store.dispatch(new UI.StopLoading());
         this._user = this._auth.authState;
         this._router.navigate(['/training']);
       })
       .catch(error => {
-        // this._uiService.loadingStateChanged.next(false);
         this._store.dispatch(new UI.StopLoading());
         this._uiService.showError(error.message, null, 4000);
       });
   }
 
   login(authData: AuthData): void {
-    // this._uiService.loadingStateChanged.next(true);
     this._store.dispatch(new UI.StartLoading());
     this._auth.auth.signInWithEmailAndPassword(authData.email, authData.email)
       .then(() => {
@@ -59,7 +55,6 @@ export class AuthService {
       })
       .catch(error => {
         this._uiService.showError(error.message, null, 4000);
-        // this._uiService.loadingStateChanged.next(false);
         this._store.dispatch(new UI.StopLoading());
       });
   }
