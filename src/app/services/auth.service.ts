@@ -9,7 +9,6 @@ import { UiService } from '../shared/ui.service';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../app.reducer';
 import * as UI from '../shared/ui.actions';
-import * as Auth from '../components/auth/auth.actions';
 
 @Injectable({
   providedIn: 'root'
