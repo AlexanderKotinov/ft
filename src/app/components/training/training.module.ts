@@ -7,6 +7,8 @@ import { PastTrainingComponent } from './past-training/past-training.component';
 import { MaterialModule } from '../../material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {TrainingRoutingModule} from "./training-routing.module";
+import {StoreModule} from "@ngrx/store";
+import {trainingReducer} from "./training.reducer";
 
 @NgModule({
   imports: [
@@ -14,7 +16,8 @@ import {TrainingRoutingModule} from "./training-routing.module";
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    TrainingRoutingModule
+    TrainingRoutingModule,
+    StoreModule.forFeature('training', trainingReducer)
   ],
   declarations: [
     TrainingComponent,
