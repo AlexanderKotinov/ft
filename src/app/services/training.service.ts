@@ -4,7 +4,8 @@ import {Subject} from 'rxjs';
 import {map} from 'rxjs/operators';
 import { AngularFirestore } from 'angularfire2/firestore';
 import {UiService} from '../shared/ui.service';
-
+import * as fromTraining from '../components/training/training.reducer';
+import * as UI from '../shared/ui.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class TrainingService {
   exercisesChanged = new Subject<Exercise[]>();
 
   constructor(private _afs: AngularFirestore,
-              private _uiService: UiService) {
+              private _uiService: UiService,
+              private _store: ) {
   }
 
   fetchAvailableExercises() {
